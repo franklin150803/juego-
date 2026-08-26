@@ -88,3 +88,14 @@ h1.logo{font-family:'Cinzel',Georgia,serif;font-weight:900;font-size:clamp(30px,
 .bdFill{height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
 .unlock{margin-top:6px;font-size:11px;color:#ffd76a;font-weight:800}
 #statusChip{position:absolute;top:8px;left:8px;font-size:10px;padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.5);color:#ffd76a;z-index:30}
+/* ══ v0.9: vertical + movilidad ══ */
+#rotateOverlay{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(3,1,10,.96);z-index:99;color:#ffe9b0;font-size:15px;font-weight:800;letter-spacing:.08em;text-align:center;pointer-events:auto}
+.rotIcon{font-size:54px;animation:rot 1.6s ease-in-out infinite}
+@keyframes rot{0%,100%{transform:rotate(90deg)}50%{transform:rotate(0deg)}}
+@media (orientation:landscape) and (pointer:coarse){#rotateOverlay{display:flex}}
+.mobBtn{position:absolute;width:54px;height:54px;border-radius:50%;background:rgba(20,10,40,.78);border:2px solid rgba(150,180,255,.5);display:none;align-items:center;justify-content:center;font-size:22px;pointer-events:auto;bottom:132px}
+body.inbattle .mobBtn{display:flex}
+#btnJump{right:20px}
+#btnSlide{right:84px}
+#btnCrouch{right:148px}
+#btnCrouch.on{border-color:#f0b64b;background:rgba(240,182,75,.3)}
