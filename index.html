@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Fractura Elemental</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -23,7 +23,7 @@
       <button id="btnPlay" class="btn">⚡ JUGAR</button>
       <button id="btnSettings" class="btn btnAlt">⚙ AJUSTES</button>
     </div>
-    <div class="ver">PARTE 4 — ARENAS Y COMBOS · PROTOTIPO 0.7</div>
+    <div class="ver">v0.9 · VERTICAL + HÉROE DE FUEGO + MOVILIDAD</div>
   </div>
 
   <div id="settingsModal" class="modalWrap">
@@ -50,10 +50,12 @@
         <div id="elCardDesc">Daño agresivo</div>
       </div>
     </div>
+    <div id="btnJump" class="mobBtn">⬆️</div>
+    <div id="btnSlide" class="mobBtn">💨</div>
+    <div id="btnCrouch" class="mobBtn">🧎</div>
     <div id="btnSec"><span id="secIco">✦</span><div id="cdSec" class="cdOverlay"></div></div>
     <div id="btnAtk"><span id="atkIco">⚔️</span><div id="cdAtk" class="cdOverlay"></div></div>
     <div id="joyBase"><div id="joyKnob"></div></div>
-    <div id="joyBase2"><div id="joyKnob2"></div></div>
   </div>
 
   <div id="cinemaText"></div><div id="skipHint">toca para saltar</div>
@@ -69,14 +71,11 @@
     </div>
   </div>
 
+  <div id="rotateOverlay"><div class="rotIcon">📱</div>GIRA EL TELÉFONO A VERTICAL</div>
   <div id="statusChip">● Cargando…</div>
-  <div id="rotateOverlay">
-    <div class="icon">🔄</div>
-    <div class="rotTitle">GIRA TU TELÉFONO</div>
-    <div class="rotSub">Fractura Elemental se juega en horizontal</div>
-  </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="personaje_fuego.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
