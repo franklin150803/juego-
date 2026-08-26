@@ -59,6 +59,16 @@ h1.logo{font-family:'Cinzel',Georgia,serif;font-weight:900;font-size:clamp(30px,
 .cdOverlay{position:absolute;inset:0;border-radius:50%;pointer-events:none}
 #joyBase{position:absolute;width:112px;height:112px;border-radius:50%;border:2px solid rgba(255,255,255,.28);background:rgba(255,255,255,.05);display:none}
 #joyKnob{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border-radius:50%;background:rgba(255,255,255,.35)}
+#joyBase2{position:absolute;width:112px;height:112px;border-radius:50%;border:2px solid rgba(255,122,42,.45);background:rgba(255,90,31,.06);display:none}
+#joyKnob2{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border-radius:50%;background:rgba(255,122,42,.4)}
+
+/* Aviso de orientación — el juego se juega en horizontal */
+#rotateOverlay{position:fixed;inset:0;z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;background:#05030d;color:#fff;padding:24px}
+#rotateOverlay .icon{font-size:52px;animation:rotHint 1.6s ease-in-out infinite}
+#rotateOverlay .rotTitle{font-family:'Cinzel',Georgia,serif;font-weight:900;letter-spacing:.12em;font-size:20px;color:#f0b64b}
+#rotateOverlay .rotSub{font-size:13px;color:#cbb8ff;max-width:280px}
+@keyframes rotHint{0%,100%{transform:rotate(0deg)}50%{transform:rotate(90deg)}}
+@media screen and (orientation:portrait){#rotateOverlay{display:flex}}
 #banner{position:absolute;top:26%;width:100%;text-align:center;opacity:0;transition:opacity .35s}
 #bannerMain{font-family:'Cinzel',Georgia,serif;font-size:clamp(24px,5.4vw,48px);font-weight:900;letter-spacing:.14em;color:#ffe9b0;text-shadow:0 0 26px rgba(240,182,75,.6),0 3px 8px #000}
 #bannerSub{margin-top:6px;font-size:clamp(12px,2.4vw,16px);color:#cbb8ff;text-shadow:0 2px 8px #000}
