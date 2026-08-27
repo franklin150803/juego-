@@ -234,10 +234,20 @@ const arenaOrbs=[];
  const core=new THREE.Mesh(new THREE.SphereGeometry(.3,16,12),new THREE.MeshBasicMaterial({color:E.color}));core.position.y=.9;g.add(core);
  const gl=glowSprite(E.color,2.2,.8);gl.position.y=.9;g.add(gl);
  const a=i/3*Math.PI*2+.7;g.position.set(Math.cos(a)*7,0,Math.sin(a)*7);arenaGroup.add(g);arenaOrbs.push({key:k,group:g,core,glow:gl,ph:Math.random()*6,taken:false});});
+
+/* ── Decoración de Volcán Inestable (Arena 3) — inspirada en la zona del mapa ──
+   Anillo de rocas volcánicas + luz de lava; solo visible cuando el estilo del Arena es 'lava' */
+const volcanoDecor=new THREE.Group();
+for(let i=0;i<14;i++){const a=i/14*Math.PI*2,r=ARENA_R+rand(2,6);
+ const roca=new THREE.Mesh(new THREE.DodecahedronGeometry(rand(1,2),0),new THREE.MeshStandardMaterial({color:0x2a1a1a,roughness:1}));
+ roca.position.set(Math.cos(a)*r,rand(.3,1.2),Math.sin(a)*r);roca.rotation.set(rand(0,3),rand(0,3),0);roca.castShadow=true;volcanoDecor.add(roca);}
+const luzLavaArena=new THREE.PointLight(0xff4400,3,ARENA_R*2.2);luzLavaArena.position.set(0,6,0);volcanoDecor.add(luzLavaArena);
+volcanoDecor.visible=false;arenaGroup.add(volcanoDecor);
+
 function applyArena(idx){curArena=idx;const A=ARENAS[idx];
  scene.fog.color.setHex(A.fog);
  for(const t of tiles){t.mat.color.setHex(A.tile).multiplyScalar(rand(.85,1.1));t.mat.emissive.setHex(A.emiss);t.mat.emissiveIntensity=1;}
- lavaPlane.visible=(A.style==='lava');crystals.visible=(idx===1);}
+ lavaPlane.visible=(A.style==='lava');crystals.visible=(idx===1);volcanoDecor.visible=(A.style==='lava');}
 function tileAtWorld(wx,wz){const i=Math.round((wx-ARENA_X)/TILE+HALF),j=Math.round(wz/TILE+HALF);
  if(i<0||j<0||i>=N||j>=N)return null;return gridI[i+'_'+j];}
 function isSafe(x,z){if(x<ARENA_X-50)return true;const t=tileAtWorld(x,z);return t&&(t.state==='solid'||t.state==='warn');}
@@ -676,6 +686,7 @@ function enterBattle(){if(phase==='battle')return;
  showBanner(ARENAS[curArena].name.toUpperCase(),ARENAS[curArena].desc,2.8);}
 function updateBattle(dt){battleTime+=dt;
  updateCollapse(dt);updatePillarsFall(dt);updateComboFx(dt);
+ if(ARENAS[curArena].style==='lava'&&Math.random()<.6)sparks.burst(new THREE.Vector3(ARENA_X+rand(-ARENA_R,ARENA_R),-1,rand(-ARENA_R,ARENA_R)),0xff6600,1,3,1.1,-2.5);
  if(warnActive){$('phaseLabel').textContent='¡SUELO COLAPSANDO!';$('phaseTimer').textContent='¡CORRE!';$('phaseTimer').classList.add('danger');}
  else if(!collapseDone){$('phaseLabel').textContent='PRÓXIMO COLAPSO';$('phaseTimer').textContent=Math.max(0,Math.ceil(nextCollapseAt-battleTime))+'s';$('phaseTimer').classList.toggle('danger',nextCollapseAt-battleTime<3);}
  else{$('phaseLabel').textContent='ÚLTIMA PLATAFORMA';$('phaseTimer').textContent='⚔';$('phaseTimer').classList.remove('danger');}
