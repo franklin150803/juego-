@@ -58,6 +58,9 @@ window.FE_FUEGO=(()=>{
   FE_FX.puffs.burst(P,0xff7733,30,9,.7,3);
   for(let i=0;i<8;i++){const a=i/8*Math.PI*2;
    FE_FX.sparks.burst({x:P.x+Math.cos(a)*2.2,y:.5,z:P.z+Math.sin(a)*2.2},0xff7700,4,3,.7,-5);}
-  FE_FX.sparks.burst({x:P.x,y:1.5,z:P.z},0xffcc00,14,6,.6,-5);}
+  FE_FX.sparks.burst({x:P.x,y:1.5,z:P.z},0xffcc00,14,6,.6,-5);
+  /* Muro de llamas (idea tomada de IGNIS): una línea de fuego se prende alrededor del punto */
+  for(let i=0;i<16;i++){const a=i/16*Math.PI*2,r=3.4;
+   FE_FX.sparks.burst({x:P.x+Math.cos(a)*r,y:.15,z:P.z+Math.sin(a)*r},0xff4400,3,2.5,.9,-6);}}
  return{build,update,projTrail,secondary};
 })();
