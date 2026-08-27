@@ -752,3 +752,16 @@ function loop(){requestAnimationFrame(loop);const dt=Math.min(clock.getDelta(),.
 loop();
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.fov=innerWidth/innerHeight<1?66:58;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 }
+/* ---- CAMBIO 1: botón JUGAR con giro a horizontal ---- */
+$('btnPlay').addEventListener('click',()=>{if(!READY){setStatus('wait','El 3D aún no está listo…');return;}
+ AU.unlock();
+ if('ontouchstart' in window){
+  try{const p=document.documentElement.requestFullscreen();if(p&&p.catch)p.catch(()=>{});}catch(e){}
+  setTimeout(()=>{try{if(screen.orientation&&screen.orientation.lock)screen.orientation.lock('landscape').catch(()=>{});}catch(e){}},300);}
+ window.__startGame();});
+
+/* ---- CAMBIO 2: aviso si falta el héroe de fuego ---- */
+loadThree(()=>{try{init();READY=true;
+ if(window.FE_FUEGO)setStatus('ok');
+ else setStatus('wait','Listo · falta personaje_fuego.js');
+}catch(e){setStatus('error',e.message);console.error(e);}});
