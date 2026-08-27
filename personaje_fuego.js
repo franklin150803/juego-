@@ -1,8 +1,5 @@
 "use strict";
-/* ══════════════════════════════════════════════
-   HÉROE DE FUEGO — archivo independiente
-   Modelo + animación + FX (edítalo sin tocar el resto)
-   ══════════════════════════════════════════════ */
+/* HÉROE DE FUEGO — archivo independiente (edítalo libremente) */
 window.FE_FUEGO=(()=>{
  const C={negro:0x0b0b10,rojo:0xff2200,naranja:0xff7700,amarillo:0xffcc00,oscuro:0x1a1420};
  function glowLocal(color,scale,op){const tex=window.FE_FX?FE_FX.glowTex:null;
