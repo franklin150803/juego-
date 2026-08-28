@@ -1,0 +1,3 @@
+import { ElementCharacter } from './character.js';
+export const LIGHTNING={key:'rayo',name:'Rayo',emoji:'⚡',color:0x11111c,accent:0x7a5cff,glow:0xffe66d,attacks:['Descarga','Cadena','Campo Estático','Juicio Celestial'],passive:'Sobrecarga'};
+export class LightningCharacter extends ElementCharacter{constructor(o={}){super({...LIGHTNING,...o});this.rings=[];for(let i=0;i<4;i++){const l=new THREE.Mesh(new THREE.TorusGeometry(.38+i*.05,.025,6,18),new THREE.MeshBasicMaterial({color:LIGHTNING.glow,transparent:true,opacity:.55,blending:THREE.AdditiveBlending}));l.rotation.x=Math.PI/2;l.position.y=.45+i*.3;this.group.add(l);this.rings.push(l)}}update(dt,t){super.update(dt,t);this.rings.forEach((r,i)=>r.rotation.z=(i%2?1:-1)*t*(1.5+i))}}
