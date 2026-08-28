@@ -1,0 +1,3 @@
+import { ElementCharacter } from './character.js';
+export const ICE={key:'hielo',name:'Hielo',emoji:'❄️',color:0x0b1822,accent:0x7edcff,glow:0xd9fbff,attacks:['Filo Glacial','Escarcha','Prisión de Hielo','Era Glacial'],passive:'Frío Extremo'};
+export class IceCharacter extends ElementCharacter{constructor(o={}){super({...ICE,...o});const halo=new THREE.Mesh(new THREE.IcosahedronGeometry(.58,1),new THREE.MeshBasicMaterial({color:ICE.glow,wireframe:true,transparent:true,opacity:.38,blending:THREE.AdditiveBlending}));halo.position.y=1.15;this.group.add(halo);this.halo=halo}update(dt,t){super.update(dt,t);this.halo.rotation.x=t*.35;this.halo.rotation.y=-t*.6}}
