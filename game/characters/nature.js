@@ -1,0 +1,3 @@
+import { ElementCharacter } from './character.js';
+export const NATURE={key:'naturaleza',name:'Naturaleza',emoji:'🌿',color:0x0b1810,accent:0x35c96b,glow:0x9cff9c,attacks:['Espina Viva','Raíces','Semilla Vital','Avatar del Bosque'],passive:'Regeneración'};
+export class NatureCharacter extends ElementCharacter{constructor(o={}){super({...NATURE,...o});for(let i=0;i<6;i++){const s=new THREE.Mesh(new THREE.ConeGeometry(.055,.5,5),new THREE.MeshBasicMaterial({color:NATURE.glow,transparent:true,opacity:.65,blending:THREE.AdditiveBlending}));const a=i*Math.PI/3;s.position.set(Math.cos(a)*.4,1.1+Math.sin(i)*.18,Math.sin(a)*.4);s.rotation.z=Math.cos(a)*.9;this.group.add(s)}}}
