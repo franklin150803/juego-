@@ -1,0 +1,3 @@
+import { ElementCharacter } from './character.js';
+export const METAL={key:'metal',name:'Metal',emoji:'⚙️',color:0x11151a,accent:0x8e9aa8,glow:0xe5f4ff,attacks:['Fragmento','Armadura','Impacto','Titán de Acero'],passive:'Piel de Acero'};
+export class MetalCharacter extends ElementCharacter{constructor(o={}){super({...METAL,...o});for(let i=0;i<5;i++){const p=new THREE.Mesh(new THREE.BoxGeometry(.16,.42,.07),new THREE.MeshStandardMaterial({color:METAL.accent,metalness:.85,roughness:.2,emissive:METAL.glow,emissiveIntensity:.08}));p.position.set((i-2)*.18,1.12,.27);p.rotation.z=(i-2)*.15;this.group.add(p)}}}
