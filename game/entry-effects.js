@@ -1,0 +1,3 @@
+export function glow(c,o=.8){return new THREE.MeshBasicMaterial({color:c,transparent:true,opacity:o,blending:THREE.AdditiveBlending,depthWrite:false});}
+export function burst(scene,list,pos,c,n=25,p=3){for(let i=0;i<n;i++){const q=new THREE.Mesh(new THREE.IcosahedronGeometry(.03+Math.random()*.05),glow(c));q.position.copy(pos);q.userData={v:new THREE.Vector3((Math.random()-.5)*p,Math.random()*p,(Math.random()-.5)*p),life:.5+Math.random()*.6};scene.add(q);list.push(q);}}
+export function updateParticles(list,dt){for(let i=list.length-1;i>=0;i--){const q=list[i];q.position.addScaledVector(q.userData.v,dt);q.userData.v.y-=dt*2;q.userData.life-=dt;if(q.userData.life<=0){q.removeFromParent();list.splice(i,1);}}}
