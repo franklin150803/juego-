@@ -3,8 +3,6 @@
 <canvas id="game"></canvas>
 <div id="hudMod"><div class="top"><div class="brand">FRACTURA <b>ELEMENTAL</b></div><div class="phase"><span id="phaseMod">EL PORTAL DESPIERTA</span><strong id="timerMod">16</strong></div><div class="stats"><span id="scoreMod">✦ 0</span><span>👥 4</span></div></div><div id="objectiveMod" class="objective">ELIGE TU ELEMENTO</div><div class="elementCard"><span id="elementEmojiMod">✦</span><div><b id="elementNameMod">SIN ELEMENTO</b><small id="feedMod">Elige una esencia para comenzar</small><div class="hp"><i id="hpBarMod"></i></div><span id="hpMod">HP 100</span></div></div><div class="abilities"><button data-key="Q">Q</button><button data-key="E">E</button><button data-key="R">R</button><button data-key="F">F</button></div><div class="mobileHelp">TOCA EL MAPA PARA ATACAR · WASD PARA MOVERTE</div></div>
 <div id="selectionMod"></div>
-<script>
-(function(){let done=false;async function landscape(){if(done)return;done=true;try{if(!document.fullscreenElement&&document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen({navigationUI:'hide'});}catch(e){}try{if(screen.orientation&&screen.orientation.lock)await screen.orientation.lock('landscape');}catch(e){}}window.addEventListener('pointerdown',landscape,{once:true,passive:true});window.addEventListener('keydown',landscape,{once:true,passive:true});})();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script type="module" src="game/experience.js"></script>
+<script>(function(){let done=false;async function landscape(){if(done)return;done=true;try{await document.documentElement.requestFullscreen?.({navigationUI:'hide'});}catch(e){}try{await screen.orientation?.lock?.('landscape');}catch(e){}}addEventListener('pointerdown',landscape,{once:true,passive:true});addEventListener('keydown',landscape,{once:true,passive:true})})();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script type="module" src="game/experience.js"></script><script src="game/mobile.js"></script>
 </body></html>
