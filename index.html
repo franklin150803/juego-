@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Fractura Elemental</title><link rel="stylesheet" href="game/styles.css"></head>
-<body><canvas id="game"></canvas><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script type="module" src="game/main.js"></script></body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#050812"><title>Fractura Elemental</title><link rel="stylesheet" href="game/styles.css"></head>
+<body>
+<canvas id="game"></canvas>
+<div id="hudMod"><div class="top"><div class="brand">FRACTURA <b>ELEMENTAL</b></div><div class="phase"><span id="phaseMod">EL PORTAL DESPIERTA</span><strong id="timerMod">18</strong></div><div class="stats"><span id="scoreMod">✦ 0</span><span>👥 4</span></div></div><div id="objectiveMod" class="objective">ELIGE TU ELEMENTO</div><div class="elementCard"><span id="elementEmojiMod">🔥</span><div><b id="elementNameMod">SIN ELEMENTO</b><small id="feedMod">Elige una esencia para comenzar</small><div class="hp"><i id="hpBarMod"></i></div><span id="hpMod">HP 100</span></div></div><div class="abilities"><button data-key="Q">Q</button><button data-key="E">E</button><button data-key="R">R</button><button data-key="F">F</button></div><div class="mobileHelp">TOCA PARA ATACAR · ESPACIO = ATAQUE · E = ESPECIAL</div></div>
+<div id="selectionMod"></div><div id="orientationMod">GIRA EL TELÉFONO A HORIZONTAL</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script type="module" src="game/main.js"></script>
+</body></html>
