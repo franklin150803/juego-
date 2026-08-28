@@ -1,0 +1,3 @@
+import { ElementCharacter } from './character.js';
+export const AIR = { key:'aire', name:'Aire', emoji:'🌀', color:0x11151c, accent:0x8ad9ff, glow:0xe8fbff, attacks:['Cuchilla de Viento','Impulso','Prisión de Aire','Tornado'], passive:'Paso Celeste' };
+export class AirCharacter extends ElementCharacter { constructor(options={}) { super({...AIR,...options}); this.wings=[]; for(let s of [-1,1]){const w=new THREE.Mesh(new THREE.PlaneGeometry(.55,.3),new THREE.MeshBasicMaterial({color:AIR.glow,transparent:true,opacity:.28,side:THREE.DoubleSide,blending:THREE.AdditiveBlending}));w.position.set(s*.38,1.18,-.08);w.rotation.y=s*.45;this.group.add(w);this.wings.push(w);} } update(dt,t){super.update(dt,t);this.wings.forEach((w,i)=>w.rotation.z=Math.sin(t*5+i)*.16);}}
