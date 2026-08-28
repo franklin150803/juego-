@@ -1,0 +1,3 @@
+import { ElementCharacter } from './character.js';
+export const WATER = { key:'agua', name:'Agua', emoji:'💧', color:0x081522, accent:0x168cff, glow:0x62d9ff, attacks:['Lanza de Agua','Marea Curativa','Prisión de Agua','Oleaje'], passive:'Corriente Vital' };
+export class WaterCharacter extends ElementCharacter { constructor(options={}) { super({...WATER,...options}); for(let i=0;i<3;i++){const r=new THREE.Mesh(new THREE.TorusGeometry(.42+i*.08,.018,6,32),new THREE.MeshBasicMaterial({color:WATER.glow,transparent:true,opacity:.45,blending:THREE.AdditiveBlending}));r.rotation.x=Math.PI/2; r.position.y=.5+i*.45;this.group.add(r);} } }
