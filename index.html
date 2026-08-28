@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#050812"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Fractura Elemental</title><link rel="stylesheet" href="game/styles.css"></head><body>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#050812">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Fractura Elemental</title>
+<link rel="stylesheet" href="game/styles.css">
+</head>
+<body>
 <canvas id="game"></canvas>
 <div id="hudMod"><div class="top"><div class="brand">FRACTURA <b>ELEMENTAL</b></div><div class="phase"><span id="phaseMod">CARGANDO...</span><strong id="timerMod">--</strong></div><div class="stats"><span id="scoreMod">✦ 0</span><span>👥 4</span></div></div><div id="objectiveMod" class="objective">PREPARANDO LA ARENA...</div><div class="elementCard"><span id="elementEmojiMod">✦</span><div><b id="elementNameMod">SIN ELEMENTO</b><small id="feedMod">Cargando...</small><div class="hp"><i id="hpBarMod"></i></div><span id="hpMod">HP 100</span></div></div><div class="abilities"><button data-key="Q">Q</button><button data-key="E">E</button><button data-key="R">R</button><button data-key="F">F</button></div></div>
 <div id="bootError" hidden></div>
-<script>(function(){let done=false;async function landscape(){if(done)return;done=true;try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen?.({navigationUI:'hide'});}catch(e){}try{await screen.orientation?.lock?.('landscape');}catch(e){}}addEventListener('pointerdown',landscape,{once:true,passive:true});addEventListener('keydown',landscape,{once:true,passive:true});window.addEventListener('error',function(e){const box=document.getElementById('bootError');if(!box||!e.error)return;box.hidden=false;box.textContent='Error al iniciar el juego: '+(e.error.message||e.message||'Error desconocido');});window.addEventListener('unhandledrejection',function(e){const box=document.getElementById('bootError');if(!box)return;box.hidden=false;box.textContent='Error al iniciar el juego: '+(e.reason?.message||e.reason||'Error desconocido');});})();</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
-<script type="module">
-(async()=>{try{if(!window.THREE)throw new Error('Three.js no pudo cargarse');await import('./game/experience-v2.js');}catch(error){console.error(error);const box=document.getElementById('bootError');box.hidden=false;box.textContent='No se pudo iniciar el juego: '+(error?.message||error);}})();
+<script>
+(function(){let started=false;async function enterLandscape(){if(started)return;started=true;try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen?.({navigationUI:'hide'});}catch(e){}try{await screen.orientation?.lock?.('landscape');}catch(e){}}addEventListener('pointerdown',enterLandscape,{once:true,passive:true});addEventListener('keydown',enterLandscape,{once:true,passive:true});window.addEventListener('error',function(e){if(!e.error)return;const box=document.getElementById('bootError');if(box){box.hidden=false;box.textContent='Error al iniciar el juego: '+(e.error.message||e.message||'Error desconocido');}});window.addEventListener('unhandledrejection',function(e){const box=document.getElementById('bootError');if(box){box.hidden=false;box.textContent='Error al iniciar el juego: '+(e.reason?.message||e.reason||'Error desconocido');}});})();
 </script>
+<script>
+(function(){function load(src){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=()=>resolve();s.onerror=()=>reject(new Error('No se pudo cargar '+src));document.head.appendChild(s);});}window.__threeReady=load('https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js').catch(()=>load('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js')).catch(()=>load('https://unpkg.com/three@0.160.0/build/three.min.js'));})();
+</script>
+<script type="module">(async()=>{try{await window.__threeReady;if(!window.THREE)throw new Error('Three.js no pudo cargarse desde ninguno de los servidores disponibles');await import('./game/experience-v2.js');}catch(error){console.error(error);const box=document.getElementById('bootError');box.hidden=false;box.textContent='No se pudo iniciar el juego: '+(error?.message||error);}})();</script>
 <script src="game/entry-overlay.js"></script><script src="game/mobile.js"></script>
 </body></html>
