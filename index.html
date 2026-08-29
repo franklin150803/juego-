@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Fractura Elemental</title>
-<link rel="stylesheet" href="game/styles.css">
-<link rel="stylesheet" href="game/mobile-controls.css">
+<link rel="stylesheet" href="game/styles.css?v=3">
+<link rel="stylesheet" href="game/mobile-controls.css?v=3">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -21,6 +21,6 @@
 <script>
 (function(){function load(src){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=()=>resolve();s.onerror=()=>reject(new Error('No se pudo cargar '+src));document.head.appendChild(s);});}window.__threeReady=load('https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js').catch(()=>load('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js')).catch(()=>load('https://unpkg.com/three@0.160.0/build/three.min.js'));})();
 </script>
-<script type="module">(async()=>{try{await window.__threeReady;if(!window.THREE)throw new Error('Three.js no pudo cargarse desde ninguno de los servidores disponibles');await import('./game/experience-v2.js');}catch(error){console.error(error);const box=document.getElementById('bootError');box.hidden=false;box.textContent='No se pudo iniciar el juego: '+(error?.message||error);}})();</script>
-<script src="game/entry-overlay.js"></script><script src="game/mobile.js"></script>
+<script type="module">(async()=>{try{await window.__threeReady;if(!window.THREE)throw new Error('Three.js no pudo cargarse desde ninguno de los servidores disponibles');await import('./game/experience-v2.js?v=3');}catch(error){console.error(error);const box=document.getElementById('bootError');box.hidden=false;box.textContent='No se pudo iniciar el juego: '+(error?.message||error);}})();</script>
+<script src="game/entry-overlay.js?v=3"></script><script src="game/mobile.js?v=3"></script>
 </body></html>
